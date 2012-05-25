@@ -17,6 +17,7 @@ Source0:	https://nodeload.github.com/%{name}/rubinius/tarball/%{git}
 Requires:	llvm
 Requires:	ncurses
 Requires:	openssl
+Requires:	libyaml
 BuildRequires:	gcc
 BuildRequires:	make
 BuildRequires:	ncurses
