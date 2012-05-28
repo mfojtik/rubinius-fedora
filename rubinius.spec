@@ -86,13 +86,8 @@ rake doc:doxygen:generate
 
 %install
 rm -rf %{buildroot}
-# FIXME: Before rake install:files we need to change the path in config.rb
-# to point to %{buildroot}
-sed -ie 's|"/usr|"%{buildroot}/usr|' config.rb
-# We don't want to do it for system ruby ;-)
-sed -ie 's|"%{buildroot}/usr/bin/ruby|"/usr/bin/ruby|' config.rb
 
-rake install:files
+FAKEROOT=%{buildroot} rake install:files
 # Fix shebang and wrong interpreter
 sed -ie '1d' %{buildroot}/%{_libdir}/%{name}/gems/bin/rdoc
 sed -ie '1d' %{buildroot}/%{_libdir}/%{name}/gems/bin/rake
